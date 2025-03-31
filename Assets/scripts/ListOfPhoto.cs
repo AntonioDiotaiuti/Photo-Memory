@@ -11,9 +11,9 @@ public class ListOfPhoto : MonoBehaviour
     {
         for(int i = 0; i < cubePrefab.Length; i++)
         {
-            if (cubePrefab[i] != null)
+            randomIndex = Random.Range(0, cubePrefab.Length);
+            if (cubePrefab[randomIndex] != null)
             {
-                randomIndex = Random.Range(0, cubePrefab.Length);
                 Instantiate(cubePrefab[randomIndex], transform.position + spawnOffset, Quaternion.identity);
                 cubePrefab[randomIndex] = null;
             }
