@@ -9,6 +9,8 @@ public class ObjInteract : MonoBehaviour
     private Dictionary<Transform, Vector3> originalPos = new Dictionary<Transform, Vector3>();
     private Dictionary<Transform, Quaternion> originalRot = new Dictionary<Transform, Quaternion>();
     private Camera m_Camera;
+    Vector3 startPos;
+    Quaternion startRot;
     private float rotationSpeed = 5f;
     private bool isExamining = false;
     private float lerpSpeed = 3f; // Speed for smooth transition
@@ -16,6 +18,8 @@ public class ObjInteract : MonoBehaviour
     void Start()
     {
         m_Camera = Camera.main;
+        Vector3 startPos = examinedObject.position;
+        Quaternion startRot = examinedObject.rotation;
     }
 
     void Update()
@@ -106,8 +110,6 @@ public class ObjInteract : MonoBehaviour
     {
         float duration = 1f; // Adjust if needed
         float timeElapsed = 0f;
-        Vector3 startPos = examinedObject.position;
-        Quaternion startRot = examinedObject.rotation;
         Vector3 targetPos = originalPos[examinedObject];
         Quaternion targetRot = originalRot[examinedObject];
 
