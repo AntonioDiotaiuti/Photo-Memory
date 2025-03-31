@@ -9,12 +9,20 @@ public class ListOfPhoto : MonoBehaviour
     int randomIndex;
     void OnMouseDown()
     {
-        do
+        for(int i = 0; i < cubePrefab.Length; i++)
         {
-            randomIndex = Random.Range(0, cubePrefab.Length);
-            Instantiate(cubePrefab[randomIndex], transform.position + spawnOffset, Quaternion.identity);
-            cubePrefab[randomIndex] = null;
-        } while (cubePrefab[randomIndex] != null);
+            if (cubePrefab[i] != null)
+            {
+                randomIndex = Random.Range(0, cubePrefab.Length);
+                Instantiate(cubePrefab[randomIndex], transform.position + spawnOffset, Quaternion.identity);
+                cubePrefab[randomIndex] = null;
+            }
+            else
+            {
+                i--;
+            }
+            
+        } 
     }
 }
 
